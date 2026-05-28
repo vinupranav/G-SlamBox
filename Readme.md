@@ -144,63 +144,16 @@ Both platforms: 100% convergence, all benchmark tests passing.
 
 ---
 
-## Getting Started
+## Source Code
 
-> **Note:** Source code will be released after publication. The instructions below describe the intended build process.
+> **Source code and build instructions will be released upon publication of the accompanying paper.** Star this repo to be notified when the code becomes available.
 
-### Prerequisites
+### Requirements
 
 - ROS 2 Humble or Jazzy
 - CUDA 12.6+
 - Ceres Solver
 - slam_toolbox dependencies
-
-### Build
-
-```bash
-# Clone into ROS 2 workspace
-cd ~/ros2_ws/src
-git clone https://github.com/[username]/g_slambox.git
-
-# Build (Jetson Orin Nano)
-cd ~/ros2_ws
-colcon build --packages-select gslambox \
-  --cmake-args -DCMAKE_CUDA_ARCHITECTURES=87 \
-  -DCMAKE_CUDA_COMPILER=/usr/local/cuda-12.6/bin/nvcc
-
-# Build (Desktop GPU, e.g. RTX 5070 Ti)
-colcon build --packages-select gslambox \
-  --cmake-args -DCMAKE_CUDA_ARCHITECTURES=120 \
-  -DCMAKE_CUDA_COMPILER=/usr/local/cuda-12.8/bin/nvcc
-```
-
-### Run
-
-```bash
-source ~/ros2_ws/install/setup.bash
-
-# With the full robot stack
-ros2 launch trackedbot_bringup real_robot_Nv_Gsl.launch.py
-
-# Standalone with a bag file
-ros2 run slam_toolbox async_slam_toolbox_node --ros-args \
-  --params-file config/gslambox_enhanced.yaml \
-  -p use_sim_time:=true
-```
-
-### Configuration
-
-Key parameters in `gslambox_enhanced.yaml`:
-
-```yaml
-slam_toolbox:
-  ros__parameters:
-    correlation_search_space_dimension: 0.5    # Search window (metres)
-    correlation_search_space_resolution: 0.01  # Step size (metres) → 51 positions
-    coarse_search_angle_offset: 0.5236         # ±30° angular range (radians)
-    coarse_angle_resolution: 0.00873           # 0.5° step → 121 angles
-    # Total: 51 × 51 × 121 = 314,721 candidate poses per scan
-```
 
 ---
 
@@ -227,7 +180,7 @@ Paper in preparation. If you use G-SlamBox in your research, please check back f
 @article{gslambox2026,
   title={G-SlamBox: GPU-Accelerated Correlative Scan Matching for 
          Real-Time 2D SLAM on Embedded Edge Devices},
-  author={[Author]},
+  author={Pranav Vinu},
   journal={[Under Review]},
   year={2026}
 }
