@@ -180,7 +180,7 @@ Paper in preparation. If you use G-SlamBox in your research, please check back f
 @article{gslambox2026,
   title={G-SlamBox: GPU-Accelerated Correlative Scan Matching for 
          Real-Time 2D SLAM on Embedded Edge Devices},
-  author={Pranav Vinu},
+  author={Pranav Sreevidya Prakash},
   journal={[Under Review]},
   year={2026}
 }
